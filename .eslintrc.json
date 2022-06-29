@@ -40,6 +40,7 @@
     "no-use-before-define": "off",
     "react/style-prop-object": "off",
     "react/no-unstable-nested-components": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "global-require": "off"
   }
 }
