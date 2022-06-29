@@ -21,7 +21,7 @@
 ```typescript
 interface User {
   id: number,
-  fName: string.
+  fName: string,
   lName: string,
   age: number,
   profilePic: string,
