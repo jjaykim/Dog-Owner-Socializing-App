@@ -39,7 +39,7 @@ interface Event {
   id: number;
   title: string;
   date: Date;
-  parkLocation: [Park]; // Array of Park Id
+  parkLocation: Park; // Park Id
   users: [User]; // Array of User Id
 }
 
