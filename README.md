@@ -29,7 +29,7 @@ interface User {
   lName: string;
   age: number;
   profilePic: string;
-  dogPic: string;
+  dogPic: [string]; // Array of Dog Picture
   dogBreed: string;
   events: [Event]; // Array of Event Id
   reviews: [Review]; // Array of Review Id
