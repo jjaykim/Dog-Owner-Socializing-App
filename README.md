@@ -19,7 +19,7 @@
 
 ## Data Type
 ```typescript
-instance User {
+interface User {
   id: number,
   fName: string.
   lName: string,
@@ -31,7 +31,7 @@ instance User {
   reviews: [Review]
 }
 
-instance Event {
+interface Event {
   id: number,
   title: string,
   date: Date,
