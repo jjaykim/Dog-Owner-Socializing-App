@@ -31,6 +31,7 @@ interface User {
   profilePic: string;
   dogPic: [string]; // Array of Dog Picture
   dogBreed: string;
+  dogName: string;
   events: [Event]; // Array of Event Id
   reviews: [Review]; // Array of Review Id
 }

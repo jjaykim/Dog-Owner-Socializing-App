@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   Text,
@@ -9,48 +9,48 @@ import {
   Dimensions,
   FlatList,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { Header } from '../components/header/Header';
 import colors from '../styles/colors';
 import adaptiveIco from '../../assets/australia.png';
+import { HomeViewerContext } from '../context/HomeViewer';
 
 const { height } = Dimensions.get('window');
 
 export const Home = ({ navigation }) => {
   const demoImages = [adaptiveIco, adaptiveIco, adaptiveIco, adaptiveIco, adaptiveIco];
+  const { viewer } = useContext(HomeViewerContext);
+
+  if (!viewer) return null;
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        {/* Header */}
-        <View style={styles.menuWrapper}>
-          <Text>Title</Text>
-          <Text>User Name</Text>
-        </View>
+      {/* Header */}
+      <Header />
 
-        {/* Search Bar */}
-        <TextInput style={styles.textInput} placeholder="Enter your address" />
+      {/* Search Bar */}
+      <TextInput style={styles.textInput} placeholder="Enter your address" />
 
-        {/* Parks */}
-        <View>
-          <FlatList
-            data={demoImages}
-            renderItem={({ item }) => {
-              return (
-                <TouchableOpacity
-                  style={styles.demoImagesBox}
-                  onPress={() => navigation.navigate('DetailScreen')}
-                >
-                  <ImageBackground source={item} style={styles.backgroundImage}>
-                    <Text>Parks</Text>
-                  </ImageBackground>
-                </TouchableOpacity>
-              );
-            }}
-            keyExtractor={(item, idx) => `${item} + ${idx}`}
-          />
-        </View>
-      </SafeAreaView>
+      {/* Parks */}
+      <View>
+        <FlatList
+          data={demoImages}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                style={styles.demoImagesBox}
+                onPress={() => navigation.navigate('DetailScreen')}
+              >
+                <ImageBackground source={item} style={styles.backgroundImage}>
+                  <Text>Parks</Text>
+                </ImageBackground>
+              </TouchableOpacity>
+            );
+          }}
+          keyExtractor={(item, idx) => `${item} + ${idx}`}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
     </View>
   );
 };
@@ -85,9 +85,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   demoImagesBox: {
-    borderStyle: 'solid',
-    borderColor: 'green',
-    borderWidth: 2,
     marginTop: 10,
   },
 });
