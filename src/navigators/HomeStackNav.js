@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home } from '../screens/Home';
 
 import { DetailsStackNav } from './DetailsStackNav';
+import { LoginStackNav } from './LoginStackNav';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ export const HomeStackNav = () => {
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="HomeScreen" component={Home} />
       <HomeStack.Screen name="DetailScreen" component={DetailsStackNav} />
+      <HomeStack.Screen name="LoginScreen" component={LoginStackNav} />
     </HomeStack.Navigator>
   );
 };

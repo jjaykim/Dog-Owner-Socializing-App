@@ -27,7 +27,7 @@ export const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {/* Header */}
-      <Header />
+      <Header navigation={navigation} />
 
       {/* Search Bar */}
       <View style={styles.searchBox}>
@@ -40,13 +40,14 @@ export const Home = ({ navigation }) => {
       </View>
 
       {/* Parks */}
-      <View>
+      <View style={{ flex: 1 }}>
         <FlatList
           data={demoImages}
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
                 style={styles.demoImagesBox}
+                activeOpacity={0.7}
                 onPress={() => navigation.navigate('DetailScreen')}
               >
                 <ImageBackground source={item} style={styles.backgroundImage}>
@@ -57,6 +58,7 @@ export const Home = ({ navigation }) => {
           }}
           keyExtractor={(item, idx) => `${item} + ${idx}`}
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 20 }}
         />
       </View>
     </View>
@@ -75,7 +77,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
-    marginVertical: 40,
+    marginTop: 40,
+    marginBottom: 20,
     borderRadius: 30,
     borderColor: '#F5F5F5',
     borderWidth: 1,
@@ -85,6 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   demoImagesBox: {
-    marginTop: 10,
+    marginTop: 20,
   },
 });

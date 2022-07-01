@@ -1,22 +1,28 @@
 import React from 'react';
-import { Text, StyleSheet, View, Button, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import colors from '../../styles/colors';
+import { Divider } from '../common/divider/Divider';
 import PuppyPalsLogo from '../common/icons/Logo';
 
-export const Header = () => {
+export const Header = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View style={styles.menuWrapper}>
         <PuppyPalsLogo />
 
-        <TouchableOpacity activeOpacity={0.5} style={styles.loginTouchBox}>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={styles.loginTouchBox}
+          onPress={() => navigation.navigate('LoginScreen')}
+        >
           <View style={styles.loginLabelBox}>
             <Text>Login</Text>
           </View>
         </TouchableOpacity>
       </View>
+
+      <Divider />
     </SafeAreaView>
   );
 };
@@ -24,6 +30,7 @@ export const Header = () => {
 const styles = StyleSheet.create({
   menuWrapper: {
     marginTop: 30,
+    marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -37,6 +44,7 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     borderWidth: 1.4,
     borderStyle: 'solid',
+    borderColor: '#E0E0E0',
   },
   loginLabelBox: {
     width: 75,
