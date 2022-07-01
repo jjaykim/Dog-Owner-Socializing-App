@@ -1,13 +1,21 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, Button, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import colors from '../../styles/colors';
+import PuppyPalsLogo from '../common/icons/Logo';
 
 export const Header = () => {
   return (
     <SafeAreaView>
       <View style={styles.menuWrapper}>
-        <Text>PuppyPals</Text>
-        <Text>Login</Text>
+        <PuppyPalsLogo />
+
+        <TouchableOpacity activeOpacity={0.5} style={styles.loginTouchBox}>
+          <View style={styles.loginLabelBox}>
+            <Text>Login</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -15,7 +23,7 @@ export const Header = () => {
 
 const styles = StyleSheet.create({
   menuWrapper: {
-    marginTop: 20,
+    marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -24,5 +32,16 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 10,
+  },
+  loginTouchBox: {
+    borderRadius: 28,
+    borderWidth: 1.4,
+    borderStyle: 'solid',
+  },
+  loginLabelBox: {
+    width: 75,
+    height: 27,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

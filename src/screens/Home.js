@@ -9,6 +9,7 @@ import {
   Dimensions,
   FlatList,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { Header } from '../components/header/Header';
 import colors from '../styles/colors';
@@ -29,7 +30,14 @@ export const Home = ({ navigation }) => {
       <Header />
 
       {/* Search Bar */}
-      <TextInput style={styles.textInput} placeholder="Enter your address" />
+      <View style={styles.searchBox}>
+        <Ionicons name="ios-search" size={20} color="#212121" style={{ padding: 10 }} />
+        <TextInput
+          style={{ flex: 1, fontSize: 14 }}
+          placeholder="Enter your address"
+          placeholderTextColor={colors.lightGray}
+        />
+      </View>
 
       {/* Parks */}
       <View>
@@ -60,25 +68,17 @@ const styles = StyleSheet.create({
     flex: 1,
     color: colors.white,
     paddingHorizontal: 30,
+    backgroundColor: colors.white,
   },
-  menuWrapper: {
-    marginVertical: 20,
+  searchBox: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-  },
-  profileImage: {
-    width: 52,
-    height: 52,
-    borderRadius: 10,
-  },
-  textInput: {
-    backgroundColor: 'white',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
+    backgroundColor: '#fff',
+    marginVertical: 40,
     borderRadius: 30,
-    marginVertical: 20,
-    fontSize: 14,
+    borderColor: '#F5F5F5',
+    borderWidth: 1,
   },
   backgroundImage: {
     height: height * 0.3,

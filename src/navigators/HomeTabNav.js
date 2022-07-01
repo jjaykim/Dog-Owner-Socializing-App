@@ -17,8 +17,8 @@ export const HomeTabNav = () => {
         tabBarIcon: ({ focused }) => {
           return (
             <Ionicons
-              name={route.name === 'HomeTab' ? 'home-outline' : 'ios-person-outline'}
-              color={focused ? colors.orange : undefined}
+              name={route.name === 'HomeTab' ? 'ios-home' : 'ios-person'}
+              color={focused ? colors.blueGreen : colors.gray}
               size={20}
             />
           );
@@ -42,8 +42,6 @@ export const HomeTabNav = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: colors.white,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    backgroundColor: '#FFFFFF',
   },
 });

@@ -47,6 +47,7 @@
     "react/style-prop-object": "off",
     "react/no-unstable-nested-components": "off",
     "react/prop-types": "off",
-    "global-require": "off"
+    "global-require": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }
