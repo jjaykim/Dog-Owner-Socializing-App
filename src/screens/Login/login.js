@@ -1,12 +1,50 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useContext, useMemo, useCallback } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BackButton } from '../../components/backButton/BackButton';
 import { ClickButton } from '../../components/clickButton/ClickButton';
 import { InputBox } from '../../components/common/inputBox/InputBox';
+import { HomeViewerContext } from '../../context/HomeViewer';
 
 export const Login = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailErrorMsg, setEmailErrorMsg] = useState('');
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState('');
+  const { viewer, setViewer } = useContext(HomeViewerContext);
+
+  const login = useCallback(async () => {
+    const LoginUser = viewer.UserData.filter((user) => {
+      if (user.email !== email && user.password === password) {
+        setEmailErrorMsg('Your email doen not match');
+      }
+
+      if (user.password !== password && user.email === email) {
+        setPasswordErrorMsg('Your password doen not match');
+      }
+
+      return user.email === email && user.password === password;
+    });
+
+    if (LoginUser.length === 0) {
+      Alert.alert('The email or password you entered is incorrect.');
+      setEmail('');
+      setPassword('');
+    } else {
+      await setViewer({
+        ...viewer,
+        LoginUser: LoginUser[0],
+      });
+
+      navigation.push('HomeScreen');
+    }
+  });
+
+  const loginDisabled = useMemo(() => {
+    return !email || !password;
+  }, [email, password]);
+
   return (
     <SafeAreaView style={{ flex: 1, marginHorizontal: '8%' }}>
       <BackButton
@@ -16,8 +54,21 @@ export const Login = ({ navigation }) => {
       />
 
       <View>
-        <InputBox placeholder="Email address" marginTop={40} />
-        <InputBox placeholder="password" secureTextEntry marginTop={30} />
+        <InputBox
+          placeholder="Email address"
+          marginTop={40}
+          value={email}
+          onChangeText={(payload) => setEmail(payload)}
+          errorMsg={emailErrorMsg}
+        />
+        <InputBox
+          placeholder="password"
+          secureTextEntry
+          marginTop={30}
+          value={password}
+          onChangeText={(payload) => setPassword(payload)}
+          errorMsg={passwordErrorMsg}
+        />
       </View>
 
       <View style={styles.forgotBox}>
@@ -26,7 +77,7 @@ export const Login = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <ClickButton btnText="Login" />
+      <ClickButton btnText="Login" onPress={login} disabled={loginDisabled} />
 
       <View style={styles.signupBox}>
         <Text style={{ fontWeight: '400', fontSize: 12, lineHeight: 18, color: '#616161' }}>

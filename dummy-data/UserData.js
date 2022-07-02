@@ -3,11 +3,14 @@ const UserData = [
     id: 1,
     fName: 'Jay',
     lName: 'Kim',
-    age: 29,
+    age: '29',
     email: 'user1@email.com',
+    password: 'user1',
     profilePic: require('../assets/User-assets/1-profilePic.png'),
     dogs: [
+      // Array of Dog
       {
+        dogName: 'Garu',
         dogBreed: 'Toy Poodle',
         dogPic: '../assets/User-assets/1-dogPic.jpeg',
       },
@@ -21,13 +24,16 @@ const UserData = [
     id: 2,
     fName: 'Alvia',
     lName: 'Siraj',
-    age: 23,
+    age: '23',
     email: 'user2@email.com',
+    password: 'user2',
     profilePic: require('../assets/User-assets/2-profilePic.png'),
     dogs: [
+      // Array of Dog
       {
-        breed: 'Husky',
-        photo: '../assets/User-assets/2-husky.jpeg',
+        dogName: 'TopGun',
+        dogBreed: 'Husky',
+        dogPic: '../assets/User-assets/2-husky.jpeg',
       },
     ],
     // Array of Event Id
@@ -39,21 +45,25 @@ const UserData = [
     id: 3,
     fName: 'Yonas',
     lName: 'Klibi',
-    age:18,
+    age: '18',
     email: 'user3@email.com',
+    password: 'user3',
     profilePic: require('../assets/User-assets/3-profilePic.png'),
     dogs: [
       {
-        breed: 'Golden Retriever',
-        photo: '../assets/User-assets/3-golden.jpeg',
+        dogName: 'Goldeni',
+        dogBreed: 'Golden Retriever',
+        dogPic: '../assets/User-assets/3-golden.jpeg',
       },
       {
-        breed: 'German shepherd',
-        photo: '../assets/User-assets/3-shepherd.jpeg',
+        dogName: 'shap',
+        dogBreed: 'German shepherd',
+        dogPic: '../assets/User-assets/3-shepherd.jpeg',
       },
       {
-        breed: 'pug',
-        photo: '../assets/User-assets/3-pug.jpeg',
+        dogName: 'pugi',
+        dogBreed: 'pug',
+        dogPic: '../assets/User-assets/3-pug.jpeg',
       },
     ],
     // Array of Event Id
@@ -61,8 +71,6 @@ const UserData = [
     // Array of Review Id
     reviews: [3, 6],
   },
-
-
 ];
 
 export default UserData;

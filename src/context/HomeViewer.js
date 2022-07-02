@@ -10,6 +10,7 @@ export const HomeViewerContext = createContext({
   EventData: [],
   ParkData: [],
   ReviewData: [],
+  LoginUser: {},
 });
 
 function HomeViewerContextProvider({ children }) {

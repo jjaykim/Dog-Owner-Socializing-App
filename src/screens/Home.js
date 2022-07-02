@@ -27,7 +27,7 @@ export const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {/* Header */}
-      <Header navigation={navigation} />
+      <Header navigation={navigation} LoginUser={viewer.LoginUser} />
 
       {/* Search Bar */}
       <View style={styles.searchBox}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-import LeftArrow from '../common/icons/LeftArrow';
+import LeftArrowIcon from '../common/icons/LeftArrowIcon';
 import LogoTitle from '../common/icons/LogoTitle';
 
 export const BackButton = ({ navigation, header, subHeader }) => {
@@ -9,7 +9,7 @@ export const BackButton = ({ navigation, header, subHeader }) => {
     <View>
       <View style={{ marginTop: '8%' }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <LeftArrow />
+          <LeftArrowIcon />
         </TouchableOpacity>
       </View>
 

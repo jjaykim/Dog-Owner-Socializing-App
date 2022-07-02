@@ -25,15 +25,20 @@
 ```typescript
 interface User {
   id: number;
-  email: string;
-  password: string;
   fName: string;
   lName: string;
-  age: number;
+  age: string;
+  email: string;
+  password: string;
   profilePic: string;
-  dogPic: [string]; // Array of Dog Picture
-  dogBreed: string;
-  dogName: string;
+  dogs: [
+    // Arrary of Dog
+    {
+      dogName: string;
+      dogBreed: string;
+      dogPic: string;
+    },
+  ];
   events: [Event]; // Array of Event Id
   reviews: [Review]; // Array of Review Id
 }
@@ -52,11 +57,14 @@ interface Park {
   address: string;
   googleLink: string;
   livePeople: [User]; // Array of User Id
+  events: [Event]; // Array of Event Id
+  reviews: [Review]; // Array of Review Id
 }
 
 interface Review {
   id: number;
   rate: number;
   comment: string;
+  parkLocation: Park; // Park Id
 }
 ```

@@ -3,10 +3,19 @@ import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 
 import colors from '../../styles/colors';
 
-export const ClickButton = ({ btnText, onPress }) => {
+export const ClickButton = ({ btnText, onPress = null, disabled = false }) => {
   return (
     <View>
-      <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={onPress}>
+      <TouchableOpacity
+        style={{
+          ...styles.button,
+          backgroundColor: disabled ? colors.gray : colors.blueGreen,
+          borderColor: disabled ? colors.gray : colors.blueGreen,
+        }}
+        activeOpacity={0.5}
+        onPress={onPress}
+        disabled={disabled}
+      >
         <Text style={{ color: colors.white }}>{btnText}</Text>
       </TouchableOpacity>
     </View>
@@ -24,8 +33,6 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 30,
     borderWidth: 1,
-    backgroundColor: colors.blueGreen,
-    borderColor: colors.blueGreen,
     marginTop: 40,
   },
 });

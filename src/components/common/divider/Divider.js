@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-export const Divider = () => {
+export const Divider = ({ color = '#F5F5F5' }) => {
   return (
     <View>
       <View
@@ -9,7 +9,7 @@ export const Divider = () => {
           width: '200%',
           marginLeft: -33,
           position: 'absolute',
-          borderBottomColor: '#F5F5F5',
+          borderBottomColor: color,
           borderBottomWidth: 2,
           marginBottom: 20,
         }}
