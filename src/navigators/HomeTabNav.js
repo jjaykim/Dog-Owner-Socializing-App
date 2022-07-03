@@ -4,8 +4,8 @@ import { StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../styles/colors';
-import { Account } from '../screens/Account';
 
+import { AccountStackNav } from './AccountStackNav';
 import { HomeStackNav } from './HomeStackNav';
 
 const Tab = createBottomTabNavigator();
@@ -35,7 +35,7 @@ export const HomeTabNav = () => {
     >
       <Tab.Screen name="HomeTab" component={HomeStackNav} />
 
-      <Tab.Screen name="AccountTab" component={Account} />
+      <Tab.Screen name="AccountTab" component={AccountStackNav} />
     </Tab.Navigator>
   );
 };

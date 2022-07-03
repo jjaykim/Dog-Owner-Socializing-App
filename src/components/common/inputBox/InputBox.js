@@ -1,6 +1,8 @@
 import React from 'react';
 import { TextInput, View, Text, StyleSheet } from 'react-native';
 
+import colors from '../../../styles/colors';
+
 export const InputBox = ({
   errorMsg,
   placeholder,
@@ -18,7 +20,7 @@ export const InputBox = ({
         style={{ ...styles.inputBox, width }}
         autoCorrect={false}
         marginTop={marginTop}
-        placeholderTextColor="#616161"
+        placeholderTextColor={colors.darkGray}
         secureTextEntry={secureTextEntry}
         value={value}
         onChangeText={onChangeText}

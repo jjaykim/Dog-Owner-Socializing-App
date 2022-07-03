@@ -22,6 +22,7 @@ function HomeViewerContextProvider({ children }) {
       EventData,
       ParkData,
       ReviewData,
+      LoginUser: UserData[0],
     });
   }, []);
 

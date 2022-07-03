@@ -10,7 +10,9 @@ export const Header = ({ navigation, LoginUser }) => {
   return (
     <SafeAreaView>
       <View style={styles.menuWrapper}>
-        <PuppyPalsLogo />
+        <TouchableOpacity onPress={() => navigation.navigate('HomeTab')}>
+          <PuppyPalsLogo />
+        </TouchableOpacity>
 
         {!LoginUser ? (
           <TouchableOpacity
@@ -32,7 +34,7 @@ export const Header = ({ navigation, LoginUser }) => {
               image={
                 LoginUser.profilePic
                   ? LoginUser.profilePic
-                  : require('../../../assets/default-Image/default-profile.jpeg')
+                  : require('../../../assets/default-Image/default-profile.png')
               }
             />
           </TouchableOpacity>

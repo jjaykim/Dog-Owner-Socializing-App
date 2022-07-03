@@ -48,7 +48,7 @@ export const Home = ({ navigation }) => {
               <TouchableOpacity
                 style={styles.demoImagesBox}
                 activeOpacity={0.7}
-                onPress={() => navigation.navigate('DetailScreen')}
+                onPress={() => navigation.push('DetailScreen')}
               >
                 <ImageBackground source={item} style={styles.backgroundImage}>
                   <Text>Parks</Text>

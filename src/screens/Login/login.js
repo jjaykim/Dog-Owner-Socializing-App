@@ -2,8 +2,8 @@ import React, { useState, useContext, useMemo, useCallback } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { BackButton } from '../../components/backButton/BackButton';
-import { ClickButton } from '../../components/clickButton/ClickButton';
+import { BackButton } from '../../components/common/backButton/BackButton';
+import { ClickButton } from '../../components/common/clickButton/ClickButton';
 import { InputBox } from '../../components/common/inputBox/InputBox';
 import { HomeViewerContext } from '../../context/HomeViewer';
 
@@ -37,7 +37,7 @@ export const Login = ({ navigation }) => {
         LoginUser: LoginUser[0],
       });
 
-      navigation.push('HomeScreen');
+      navigation.navigate('HomeScreen');
     }
   });
 
@@ -84,8 +84,8 @@ export const Login = ({ navigation }) => {
           Don&apos;t have an account?
         </Text>
 
-        <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('SignUp')}>
-          <Text>Sin up</Text>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.push('SignUp')}>
+          <Text>Sign up</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

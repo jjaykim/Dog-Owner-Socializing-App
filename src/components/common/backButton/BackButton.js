@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-import LeftArrowIcon from '../common/icons/LeftArrowIcon';
-import LogoTitle from '../common/icons/LogoTitle';
+import colors from '../../../styles/colors';
+import LeftArrowIcon from '../icons/LeftArrowIcon';
+import LogoTitle from '../icons/LogoTitle';
 
 export const BackButton = ({ navigation, header, subHeader }) => {
   return (
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 16,
-    color: '#616161',
+    color: colors.darkGray,
     textAlign: 'left',
     marginTop: 10,
   },

@@ -12,11 +12,16 @@ const UserData = [
       {
         dogName: 'Garu',
         dogBreed: 'Toy Poodle',
-        dogPic: '../assets/User-assets/1-dogPic.jpeg',
+        dogPic: '../assets/User-assets/1-dogPic-Puddle.jpeg',
+      },
+      {
+        dogName: 'DDang',
+        dogBreed: 'Jindo',
+        dogPic: '../assets/User-assets/1-dogPic-Jindo.png',
       },
     ],
     // Array of Event Id
-    events: [1],
+    events: [1, 2],
     // Array of Review Id
     reviews: [1, 2],
   },
@@ -37,7 +42,7 @@ const UserData = [
       },
     ],
     // Array of Event Id
-    events: [2],
+    events: [1, 2],
     // Array of Review Id
     reviews: [4, 5],
   },
@@ -67,7 +72,7 @@ const UserData = [
       },
     ],
     // Array of Event Id
-    events: [3],
+    events: [1, 3],
     // Array of Review Id
     reviews: [3, 6],
   },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 
+import colors from '../../styles/colors';
 import PlusIcon from '../common/icons/PlusIcon';
 
 export const UploadButton = ({ btnText, onPress = null, disabled = false }) => {
@@ -13,7 +14,7 @@ export const UploadButton = ({ btnText, onPress = null, disabled = false }) => {
         disabled={disabled}
       >
         <View style={styles.textBox}>
-          <Text style={{ paddingRight: 8, color: '#616161' }}>{btnText}</Text>
+          <Text style={{ paddingRight: 8, color: colors.darkGray }}>{btnText}</Text>
           <PlusIcon />
         </View>
       </TouchableOpacity>

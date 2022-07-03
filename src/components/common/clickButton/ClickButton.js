@@ -1,22 +1,28 @@
 import React from 'react';
 import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 
-import colors from '../../styles/colors';
+import colors from '../../../styles/colors';
 
-export const ClickButton = ({ btnText, onPress = null, disabled = false }) => {
+export const ClickButton = ({
+  btnText,
+  onPress = null,
+  disabled = false,
+  btnColor = colors.blueGreen,
+  textColor = colors.white,
+}) => {
   return (
     <View>
       <TouchableOpacity
         style={{
           ...styles.button,
-          backgroundColor: disabled ? colors.gray : colors.blueGreen,
-          borderColor: disabled ? colors.gray : colors.blueGreen,
+          backgroundColor: disabled ? colors.gray : btnColor,
+          borderColor: disabled ? colors.gray : btnColor,
         }}
         activeOpacity={0.5}
         onPress={onPress}
         disabled={disabled}
       >
-        <Text style={{ color: colors.white }}>{btnText}</Text>
+        <Text style={{ color: textColor }}>{btnText}</Text>
       </TouchableOpacity>
     </View>
   );

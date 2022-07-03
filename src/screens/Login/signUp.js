@@ -6,8 +6,8 @@ import 'react-native-get-random-values';
 import { v4 as uuid } from 'uuid';
 import map from 'lodash/map';
 
-import { BackButton } from '../../components/backButton/BackButton';
-import { ClickButton } from '../../components/clickButton/ClickButton';
+import { BackButton } from '../../components/common/backButton/BackButton';
+import { ClickButton } from '../../components/common/clickButton/ClickButton';
 import { InputBox } from '../../components/common/inputBox/InputBox';
 import { Divider } from '../../components/common/divider/Divider';
 import colors from '../../styles/colors';

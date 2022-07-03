@@ -46,9 +46,10 @@ interface User {
 interface Event {
   id: number;
   title: string;
-  date: Date;
+  date: Date; // dayjs().utc('z').local().tz('America/Toronto')
   parkLocation: Park; // Park Id
   users: [User]; // Array of User Id
+  ownerId: number;
 }
 
 interface Park {
@@ -65,6 +66,7 @@ interface Review {
   id: number;
   rate: number;
   comment: string;
+  dage: Date; // dayjs().utc('z').local().tz('America/Toronto')
   parkLocation: Park; // Park Id
 }
 ```
