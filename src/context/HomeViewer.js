@@ -11,10 +11,18 @@ export const HomeViewerContext = createContext({
   ParkData: [],
   ReviewData: [],
   LoginUser: {},
+  SearchedData: [],
 });
 
 function HomeViewerContextProvider({ children }) {
-  const [viewer, setViewer] = useState(null);
+  const [viewer, setViewer] = useState({
+    UserData: [],
+    EventData: [],
+    ParkData: [],
+    ReviewData: [],
+    LoginUser: {},
+    SearchedData: [],
+  });
 
   useEffect(() => {
     setViewer({
@@ -23,6 +31,7 @@ function HomeViewerContextProvider({ children }) {
       ParkData,
       ReviewData,
       LoginUser: UserData[0],
+      SearchedData: [],
     });
   }, []);
 

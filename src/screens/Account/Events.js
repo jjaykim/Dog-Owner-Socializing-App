@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import { Ionicons } from '@expo/vector-icons';
+import find from 'lodash/find';
 
 import colors from '../../styles/colors';
 import { BackButton } from '../../components/common/backButton/BackButton';
@@ -33,7 +34,9 @@ export const Events = ({ navigation, route }) => {
           ...result.previous,
           {
             events: events[id - 1],
-            parkName: parks[events[id - 1].parkLocation - 1].name,
+            parkName: find(parks, (park) => {
+              return park.placeId === events[id - 1].parkPlaceId;
+            }).name,
             owner: `${users[events[id - 1].ownerId - 1].fName} ${
               users[events[id - 1].ownerId - 1].lName
             }`,
@@ -44,7 +47,9 @@ export const Events = ({ navigation, route }) => {
           ...result.upComming,
           {
             events: events[id - 1],
-            parkName: parks[events[id - 1].parkLocation - 1].name,
+            parkName: find(parks, (park) => {
+              return park.placeId === events[id - 1].parkPlaceId;
+            }).name,
             owner: `${users[events[id - 1].ownerId - 1].fName} ${
               users[events[id - 1].ownerId - 1].lName
             }`,
@@ -101,7 +106,7 @@ export const Events = ({ navigation, route }) => {
                       ]);
                     }}
                   >
-                    <Ionicons name="ios-pencil" size={15} color="#212121" />
+                    <Ionicons name="ios-pencil" size={15} color="#274555" />
                   </TouchableOpacity>
                 </View>
 
@@ -170,7 +175,7 @@ export const Events = ({ navigation, route }) => {
                       ]);
                     }}
                   >
-                    <Ionicons name="trash-bin" size={15} color="#212121" />
+                    <Ionicons name="trash-bin" size={15} color="#DC0815" />
                   </TouchableOpacity>
                 </View>
 

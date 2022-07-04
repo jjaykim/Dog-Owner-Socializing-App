@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'rea
 import { SafeAreaView } from 'react-native-safe-area-context';
 import map from 'lodash/map';
 import orderBy from 'lodash/orderBy';
+import find from 'lodash/find';
 import { Ionicons } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 
@@ -18,7 +19,9 @@ export const Reviews = ({ navigation, route }) => {
     map(user.reviews, (id) => {
       return {
         review: reviews[id - 1],
-        parkName: parks[reviews[id - 1].parkLocation - 1].name,
+        parkName: find(parks, (park) => {
+          return park.placeId === reviews[id - 1].parkPlaceId;
+        }).name,
       };
     }),
     ['review.date'],
@@ -106,7 +109,7 @@ export const Reviews = ({ navigation, route }) => {
                     {/* Edit & Delete */}
                     <View
                       style={{
-                        marginTop: 20,
+                        marginTop: 8,
                         flexDirection: 'row',
                         justifyContent: 'flex-end',
                       }}
@@ -123,7 +126,7 @@ export const Reviews = ({ navigation, route }) => {
                           ]);
                         }}
                       >
-                        <Ionicons name="ios-pencil" size={15} color="#212121" />
+                        <Ionicons name="ios-pencil" size={15} color="#274555" />
                       </TouchableOpacity>
 
                       <TouchableOpacity
@@ -139,7 +142,7 @@ export const Reviews = ({ navigation, route }) => {
                           ]);
                         }}
                       >
-                        <Ionicons name="trash-bin" size={15} color="#212121" />
+                        <Ionicons name="trash-bin" size={15} color="#DC0815" />
                       </TouchableOpacity>
                     </View>
                   </View>

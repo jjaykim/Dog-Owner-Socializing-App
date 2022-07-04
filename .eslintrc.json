@@ -18,6 +18,7 @@
       }
     ],
     "arrow-body-style": "off",
+    "import/no-unresolved": "off",
     "import/order": [
       "error",
       {

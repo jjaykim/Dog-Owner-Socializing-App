@@ -4,7 +4,7 @@ const EventData = [
     title: 'Play with our dogs',
     date: '2022-06-14T17:30:00.000Z',
     // Park Id
-    parkLocation: 1,
+    parkPlaceId: 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg',
     // Array of User Id
     users: [1, 2, 3],
     ownerId: 1,
@@ -13,8 +13,8 @@ const EventData = [
     id: 2,
     title: 'Make a friend to my dog',
     date: '2022-07-05T18:00:00.000Z',
-    // Park Id
-    parkLocation: 1,
+    // ParkPlace Id
+    parkPlaceId: 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg',
     // Array of User Id
     users: [1],
     ownerId: 1,
@@ -24,7 +24,7 @@ const EventData = [
     title: 'Meet My Husky',
     date: '2022-07-13T15:30:00.000Z',
     // Park Id
-    parkLocation: 2,
+    parkPlaceId: 'ChIJfW6I2D7L1IkRBuVHnciWKyc',
     // Array of User Id
     users: [2],
     ownerId: 2,
@@ -34,7 +34,7 @@ const EventData = [
     title: 'Make a friend to my pug',
     date: '2022-07-24T14:00:00.000Z',
     // Park Id
-    parkLocation: 3,
+    parkPlaceId: 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0',
     // Array of User Id
     users: [3],
     ownerId: 3,

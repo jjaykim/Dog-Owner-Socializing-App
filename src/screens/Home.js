@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,21 +8,53 @@ import {
   TouchableOpacity,
   Dimensions,
   FlatList,
+  ActivityIndicator,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { GOOGLE_MAPS_APIKEY } from '@env';
 
 import { Header } from '../components/header/Header';
 import colors from '../styles/colors';
-import adaptiveIco from '../../assets/australia.png';
 import { HomeViewerContext } from '../context/HomeViewer';
+import { normalizeParkList } from '../../dummy-data/ParkData';
 
 const { height } = Dimensions.get('window');
 
 export const Home = ({ navigation }) => {
-  const demoImages = [adaptiveIco, adaptiveIco, adaptiveIco, adaptiveIco, adaptiveIco];
-  const { viewer } = useContext(HomeViewerContext);
+  const { viewer, setViewer } = useContext(HomeViewerContext);
+  const [loading, setLoading] = useState(false);
+  const [fetching, setFetching] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
 
-  if (!viewer) return null;
+  useEffect(() => {
+    if (!viewer) {
+      setLoading(true);
+    }
+  }, [viewer]);
+
+  const handleSubmit = async () => {
+    const res = await fetch(
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchInput}+dog+park&language=en&key=${GOOGLE_MAPS_APIKEY}`,
+    );
+
+    const result = await res.json();
+
+    const filteredParkList = normalizeParkList(result.results, GOOGLE_MAPS_APIKEY);
+
+    await setViewer({
+      ...viewer,
+      SearchedData: filteredParkList,
+    });
+
+    setFetching(false);
+    setSearchInput('');
+  };
+
+  if (loading) {
+    <View>
+      <Text>Sorry, please Re-start our App agian 🙏</Text>
+    </View>;
+  }
 
   return (
     <View style={styles.container}>
@@ -36,31 +68,56 @@ export const Home = ({ navigation }) => {
           style={{ flex: 1, fontSize: 14 }}
           placeholder="Enter your address"
           placeholderTextColor={colors.lightGray}
+          returnKeyType="search"
+          onChangeText={(input) => setSearchInput(input)}
+          value={searchInput}
+          onSubmitEditing={() => {
+            setFetching(true);
+            handleSubmit();
+          }}
         />
       </View>
 
-      {/* Parks */}
-      <View style={{ flex: 1 }}>
-        <FlatList
-          data={demoImages}
-          renderItem={({ item }) => {
-            return (
-              <TouchableOpacity
-                style={styles.demoImagesBox}
-                activeOpacity={0.7}
-                onPress={() => navigation.push('DetailScreen')}
-              >
-                <ImageBackground source={item} style={styles.backgroundImage}>
-                  <Text>Parks</Text>
-                </ImageBackground>
-              </TouchableOpacity>
-            );
-          }}
-          keyExtractor={(item, idx) => `${item} + ${idx}`}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 20 }}
-        />
-      </View>
+      {/* Parks & Loading */}
+      {!viewer.ParkData.length || fetching ? (
+        <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
+          <View
+            style={{
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Text style={{ marginBottom: 20, color: colors.darkGray, fontSize: 14 }}>
+              Fetching Data...
+            </Text>
+            <ActivityIndicator color={colors.black} size={20} />
+          </View>
+        </View>
+      ) : (
+        <View style={{ flex: 1 }}>
+          <FlatList
+            data={viewer.SearchedData.length ? viewer.SearchedData : viewer.ParkData}
+            renderItem={({ item }) => {
+              return (
+                <TouchableOpacity
+                  key={item.placeId}
+                  style={styles.demoImagesBox}
+                  activeOpacity={0.7}
+                  onPress={() => navigation.push('DetailScreen')}
+                >
+                  <ImageBackground source={{ uri: item.image }} style={styles.backgroundImage}>
+                    <Text>Parks</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+              );
+            }}
+            keyExtractor={(item, idx) => `${item} + ${idx}`}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 20 }}
+          />
+        </View>
+      )}
     </View>
   );
 };
