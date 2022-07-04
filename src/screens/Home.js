@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 import {
   View,
   Text,
@@ -25,12 +25,25 @@ export const Home = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+  const [filteredParkList, setFilteredParkList] = useState([]);
 
   useEffect(() => {
     if (!viewer) {
       setLoading(true);
     }
   }, [viewer]);
+
+  useEffect(() => {
+    if (filteredParkList.length > 0) {
+      setViewer({
+        ...viewer,
+        SearchedData: filteredParkList,
+      });
+
+      setFetching(false);
+      setSearchInput('');
+    }
+  }, [filteredParkList]);
 
   const handleSubmit = async () => {
     const res = await fetch(
@@ -39,15 +52,7 @@ export const Home = ({ navigation }) => {
 
     const result = await res.json();
 
-    const filteredParkList = normalizeParkList(result.results, GOOGLE_MAPS_APIKEY);
-
-    await setViewer({
-      ...viewer,
-      SearchedData: filteredParkList,
-    });
-
-    setFetching(false);
-    setSearchInput('');
+    setFilteredParkList(normalizeParkList(result.results, GOOGLE_MAPS_APIKEY));
   };
 
   if (loading) {
