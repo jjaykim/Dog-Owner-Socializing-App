@@ -14,7 +14,7 @@ export const Header = ({ navigation, LoginUser }) => {
           <PuppyPalsLogo />
         </TouchableOpacity>
 
-        {!LoginUser ? (
+        {!LoginUser.fName ? (
           <TouchableOpacity
             activeOpacity={0.5}
             style={styles.loginTouchBox}

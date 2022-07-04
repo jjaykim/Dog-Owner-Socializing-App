@@ -130,7 +130,9 @@ export const Events = ({ navigation, route }) => {
                   <View style={{ flexDirection: 'row', marginTop: 8, alignItems: 'center' }}>
                     <Ionicons name="ios-person" size={15} color="#212121" />
                     <Text style={{ marginLeft: 4, color: colors.darkGray }}>Owenr by</Text>
-                    <Text style={{ fontWeight: '500', fontSize: 15 }}>{event.owner}</Text>
+                    <Text style={{ fontWeight: '500', fontSize: 15, marginLeft: 4 }}>
+                      {event.owner}
+                    </Text>
                   </View>
 
                   <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 10 }}>
@@ -199,7 +201,9 @@ export const Events = ({ navigation, route }) => {
                   <View style={{ flexDirection: 'row', marginTop: 8, alignItems: 'center' }}>
                     <Ionicons name="ios-person" size={15} color="#212121" />
                     <Text style={{ marginLeft: 4, color: colors.darkGray }}>Owenr by</Text>
-                    <Text style={{ fontWeight: '500', fontSize: 15 }}>{event.owner}</Text>
+                    <Text style={{ fontWeight: '500', fontSize: 15, marginLeft: 4 }}>
+                      {event.owner}
+                    </Text>
                   </View>
 
                   <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 10 }}>
