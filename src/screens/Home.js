@@ -12,11 +12,14 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { GOOGLE_MAPS_APIKEY } from '@env';
+import map from 'lodash/map';
 
 import { Header } from '../components/header/Header';
 import colors from '../styles/colors';
 import { HomeViewerContext } from '../context/HomeViewer';
 import { normalizeParkList } from '../../dummy-data/ParkData';
+import ReviewData from '../../dummy-data/ReviewData';
+import _ from 'lodash';
 
 const { height } = Dimensions.get('window');
 
@@ -45,11 +48,9 @@ export const Home = ({ navigation }) => {
     }
   }, [filteredParkList]);
 
-  const tempFunction = (ver)=>{
-    return(
-      <Text> HELLO{ver}</Text>
-    )
-  }
+  const tempFunction = (ver) => {
+    return <Text> HELLO{ver}</Text>;
+  };
   const handleSubmit = async () => {
     const res = await fetch(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchInput}+dog+park&language=en&key=${GOOGLE_MAPS_APIKEY}`,
@@ -65,6 +66,21 @@ export const Home = ({ navigation }) => {
       <Text>Sorry, please Re-start our App agian 🙏</Text>
     </View>;
   }
+
+  // const sendReviewData = () => {
+  //   return (
+  //     <View>
+  //       <FlatList 
+  //         data={viewer.ReviewData}
+  //         renderItem={({ item }) => {
+           
+  //         }}
+
+          
+  //         />
+  //     </View>
+  //   );
+  // };
 
   return (
     <View style={styles.container}>
@@ -114,13 +130,13 @@ export const Home = ({ navigation }) => {
                   key={item.placeId}
                   style={styles.demoImagesBox}
                   activeOpacity={0.7}
-                  onPress={() =>
-                    console.log( item.reviews)
-                    //  navigation.push('DetailScreen', {
-                    //   ParkName: item.name,
-                    //   Reviews: viewer.ReviewData
-                    // })
-                    
+                  onPress={
+                    () => 
+                     navigation.push('DetailScreen', {
+                      ParkName: item.name,
+                      Reviews: item.reviews,
+                      AllReviews: viewer.ReviewData
+                    })
                   }
                 >
                   <ImageBackground source={{ uri: item.image }} style={styles.backgroundImage}>
