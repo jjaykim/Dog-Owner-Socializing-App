@@ -16,7 +16,7 @@ import { GOOGLE_MAPS_APIKEY } from '@env';
 import { Header } from '../components/header/Header';
 import colors from '../styles/colors';
 import { HomeViewerContext } from '../context/HomeViewer';
-import { normalizeParkList } from '../../dummy-data/ParkData';
+import { normalizeParkList, fetchParkList } from '../../dummy-data/ParkData';
 
 const { height } = Dimensions.get('window');
 
@@ -46,10 +46,7 @@ export const Home = ({ navigation }) => {
   }, [filteredParkList]);
 
   const handleSubmit = async () => {
-    const res = await fetch(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchInput}+dog+park&language=en&key=${GOOGLE_MAPS_APIKEY}`,
-    );
-
+    const res = await fetchParkList(searchInput);
     const result = await res.json();
 
     setFilteredParkList(normalizeParkList(result.results, GOOGLE_MAPS_APIKEY));
@@ -84,7 +81,7 @@ export const Home = ({ navigation }) => {
       </View>
 
       {/* Parks & Loading */}
-      {!viewer.ParkData.length || fetching ? (
+      {viewer.ParkData.length < 0 || fetching ? (
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
           <View
             style={{
@@ -102,8 +99,11 @@ export const Home = ({ navigation }) => {
       ) : (
         <View style={{ flex: 1 }}>
           <FlatList
-            data={viewer.SearchedData.length ? viewer.SearchedData : viewer.ParkData}
+            data={viewer.SearchedData.length > 0 ? viewer.SearchedData : viewer.ParkData}
             renderItem={({ item }) => {
+              if (!item.image) {
+                setFetching(true);
+              }
               return (
                 <TouchableOpacity
                   key={item.placeId}
@@ -112,7 +112,7 @@ export const Home = ({ navigation }) => {
                   onPress={() => navigation.push('DetailScreen')}
                 >
                   <ImageBackground source={{ uri: item.image }} style={styles.backgroundImage}>
-                    <Text>Parks</Text>
+                    <Text>{item.name}</Text>
                   </ImageBackground>
                 </TouchableOpacity>
               );
