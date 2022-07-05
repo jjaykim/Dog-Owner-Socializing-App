@@ -23,6 +23,7 @@ function HomeViewerContextProvider({ children }) {
     LoginUser: {},
     SearchedData: [],
   });
+  
 
   useEffect(() => {
     setViewer({

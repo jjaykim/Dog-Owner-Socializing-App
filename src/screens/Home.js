@@ -45,6 +45,11 @@ export const Home = ({ navigation }) => {
     }
   }, [filteredParkList]);
 
+  const tempFunction = (ver)=>{
+    return(
+      <Text> HELLO{ver}</Text>
+    )
+  }
   const handleSubmit = async () => {
     const res = await fetch(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchInput}+dog+park&language=en&key=${GOOGLE_MAPS_APIKEY}`,
@@ -109,7 +114,14 @@ export const Home = ({ navigation }) => {
                   key={item.placeId}
                   style={styles.demoImagesBox}
                   activeOpacity={0.7}
-                  onPress={() => navigation.push('DetailScreen')}
+                  onPress={() =>
+                    console.log( item.reviews)
+                    //  navigation.push('DetailScreen', {
+                    //   ParkName: item.name,
+                    //   Reviews: viewer.ReviewData
+                    // })
+                    
+                  }
                 >
                   <ImageBackground source={{ uri: item.image }} style={styles.backgroundImage}>
                     <Text>Parks</Text>
