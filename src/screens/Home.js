@@ -135,7 +135,10 @@ export const Home = ({ navigation }) => {
                      navigation.push('DetailScreen', {
                       ParkName: item.name,
                       Reviews: item.reviews,
-                      AllReviews: viewer.ReviewData
+                      AllReviews: viewer.ReviewData,
+                      Events: item.events,
+                      AllEvents: viewer.EventData,
+                      AllUsers: viewer.UserData,
                     })
                   }
                 >
