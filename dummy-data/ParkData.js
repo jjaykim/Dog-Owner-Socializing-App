@@ -171,7 +171,7 @@ export const normalizeParkList = (data, key) => {
     const convertedName = park.name.replace(/(\s*)/g, '');
     const searchName = park.name.replace(/ /g, '+');
 
-    // Dummy Data 1
+    // Dummy Data 1 - Ramsden Dog Park
     if (park.place_id === 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg') {
       return {
         id: idx + 1,
@@ -188,7 +188,8 @@ export const normalizeParkList = (data, key) => {
       };
     }
 
-    if (park.placeId === 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0') {
+    // Dummy Data 2 - Cheery beach
+    if (park.place_id === 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0') {
       return {
         id: idx + 1,
         addrss: park.formatted_address,
@@ -204,7 +205,8 @@ export const normalizeParkList = (data, key) => {
       };
     }
 
-    if (park.placeId === 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0') {
+    // Dummy Data 3 - Sunnybrook Dog Park
+    if (park.place_id === 'ChIJTeQH5iTN1IkRkzdk0eGU3fc') {
       return {
         id: idx + 1,
         addrss: park.formatted_address,

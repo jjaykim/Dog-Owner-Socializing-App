@@ -13,7 +13,7 @@ const ReviewData = [
     comment: 'Lawn condition is not very good',
     date: '2022-06-13T12:30:00.000Z',
     // ParkPlace Id
-    parkPlaceId: 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg',
+    parkPlaceId: 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0',
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const ReviewData = [
     comment: 'Amazing Park!',
     date: '2022-06-23T18:00:00.000Z',
     // ParkPlace Id
-    parkPlaceId: 'ChIJfW6I2D7L1IkRBuVHnciWKyc',
+    parkPlaceId: 'ChIJTeQH5iTN1IkRkzdk0eGU3fc',
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const ReviewData = [
     comment: 'Awful park, Dont come here!',
     date: '2022-06-05T10:40:00.000Z',
     // ParkPlace Id
-    parkPlaceId: 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0',
+    parkPlaceId: 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg',
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const ReviewData = [
     comment: 'Amazing place, I recommend to everyone!',
     date: '2022-07-03T20:10:00.000Z',
     // ParkPlace Id
-    parkPlaceId: 'ChIJB3racZ01K4gRCbUUxLObRWk',
+    parkPlaceId: 'ChIJTeQH5iTN1IkRkzdk0eGU3fc',
   },
 ];
 

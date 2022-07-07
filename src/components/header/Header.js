@@ -14,7 +14,7 @@ export const Header = ({ navigation, LoginUser }) => {
           <PuppyPalsLogo />
         </TouchableOpacity>
 
-        {!LoginUser.fName ? (
+        {JSON.stringify(LoginUser) === '{}' ? (
           <TouchableOpacity
             activeOpacity={0.5}
             style={styles.loginTouchBox}
@@ -30,13 +30,7 @@ export const Header = ({ navigation, LoginUser }) => {
             activeOpacity={0.5}
             onPress={() => navigation.navigate('AccountTab')}
           >
-            <CircleImage
-              image={
-                LoginUser.profilePic
-                  ? LoginUser.profilePic
-                  : require('../../../assets/default-Image/default-profile.png')
-              }
-            />
+            <CircleImage image={LoginUser.profilePic} />
           </TouchableOpacity>
         )}
       </View>

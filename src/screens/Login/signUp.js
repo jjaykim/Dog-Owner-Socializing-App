@@ -26,7 +26,7 @@ export const SignUp = ({ navigation }) => {
     age: '',
     email: '',
     password: '',
-    profilePic: '',
+    profilePic: require('../../../assets/default-Image/default-profile.png'),
     dogs: [],
     events: [],
     reviews: [],
@@ -36,7 +36,7 @@ export const SignUp = ({ navigation }) => {
       {
         dogName: '',
         dogBreed: '',
-        dogPic: '',
+        dogPic: require('../../../assets/default-Image/default-dog-profile.png'),
       },
     ],
   });

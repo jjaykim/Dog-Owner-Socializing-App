@@ -11,7 +11,7 @@ const DetailsStack = createNativeStackNavigator();
 export const DetailsStackNav = () => {
   return (
     <DetailsStack.Navigator screenOptions={{ headerShown: false }}>
-      <DetailsStack.Screen name="ParkDetails" component={ParkDetails} />
+      <DetailsStack.Screen name="DetailScreen" component={ParkDetails} />
       <DetailsStack.Screen name="PeopleDetails" component={PeopleDetails} />
       <DetailsStack.Screen name="ReviewDetails" component={ReviewDetails} />
       <DetailsStack.Screen name="EventDetails" component={EventDetails} />
