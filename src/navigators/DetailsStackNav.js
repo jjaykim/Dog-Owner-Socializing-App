@@ -56,13 +56,13 @@ export const DetailsStackNav = ({ route }) => {
     <ScrollView>
       <View style={styles.content}>
         {/*DOG PARK TITLE */}
-        
+
         <View style={styles.containerBottom}>
           <View style={styles.map}>
             <Image source={image} style={styles.mapImg} />
             <Text style={styles.title}>{parkName}</Text>
             <Text style={styles.parkDetails}> {parkAddress}</Text>
-            </View>
+          </View>
         </View>
 
         {/* <View style={styles.containerBottom}>
@@ -71,7 +71,6 @@ export const DetailsStackNav = ({ route }) => {
           </View>
         </View> */}
 
-        
         {/* REVIEWS */}
         <View
           style={{ alignSelf: 'stretch', flexDirection: 'row', justifyContent: 'space-between' }}
@@ -105,14 +104,7 @@ export const DetailsStackNav = ({ route }) => {
                     paddingTop: 5,
                   }}
                 >
-                  {/* Rate */}
-                  <View style={{ flexDirection: 'row', alignItems: 'center', flex: 0.2 }}>
-                    <Ionicons name="star-sharp" size={15} />
-                    <Text style={{ marginTop: 2, marginLeft: 4 }}>{item.review.rate}</Text>
-                  </View>
-
-                  <View style={{ borderLeftWidth: 1, borderLeftColor: colors.gray, flex: 0.08 }} />
-
+                 
                   {/* Date */}
                   <View
                     style={{
@@ -122,11 +114,30 @@ export const DetailsStackNav = ({ route }) => {
                       alignItems: 'center',
                     }}
                   >
-                    <Ionicons name="ios-calendar" size={15} color="#212121" />
+                    <Ionicons
+                      style={{ marginLeft: 4 }}
+                      name="ios-calendar"
+                      size={15}
+                      color="#212121"
+                    />
 
                     <Text style={{ marginLeft: 4, marginTop: 2 }}>
                       {dayjs(item.review.date).format('YYYY-MM-DD')}
                     </Text>
+                  </View>
+                </View>
+                <View>
+                   {/* Rate */}
+                   <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      flex: 0.2,
+                      marginLeft: -4,
+                    }}
+                  >
+                    <Ionicons style={{ marginTop: 10, marginRight:5 }} name="star-sharp" size={15} />
+                    <Text style={{ marginTop: 10, marginRight:5 }}>{item.review.rate}</Text>
                   </View>
                 </View>
               </View>
@@ -204,14 +215,14 @@ const styles = StyleSheet.create({
     height: '85%',
     width: '25%',
     padding: '5%',
-    margin: '5%'
+    margin: '5%',
   },
   parkDetails: {
     fontWeight: '100',
     fontSize: 20,
     paddingTop: 10,
     alignSelf: 'stretch',
-    marginBottom:-30,
+    marginBottom: -30,
     paddingLeft: '5%',
   },
   events: {
@@ -227,7 +238,7 @@ const styles = StyleSheet.create({
     height: '85%',
     width: '25%',
     padding: '5%',
-    margin: '5%'
+    margin: '5%',
   },
   map: {
     flexGrow: 1,
