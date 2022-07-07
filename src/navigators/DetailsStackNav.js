@@ -211,7 +211,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 10,
     alignSelf: 'stretch',
-    marginBottom:-30
+    marginBottom:-30,
+    paddingLeft: '5%',
   },
   events: {
     flexGrow: 1,
@@ -269,7 +270,8 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: '700',
     fontSize: 30,
-    paddingTop: 10,
+    paddingLeft: '5%',
+    marginBottom: -10,
     alignSelf: 'stretch',
   },
   headerTitle: { fontWeight: 'bold', fontSize: 20, marginLeft: 8, letterSpacing: 2 },
