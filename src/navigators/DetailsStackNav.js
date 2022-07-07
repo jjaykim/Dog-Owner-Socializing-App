@@ -53,6 +53,7 @@ export const DetailsStackNav = ({ route }) => {
   );
 
   return (
+
     <ScrollView>
       <View style={styles.content}>
         {/*DOG PARK TITLE */}
@@ -198,6 +199,14 @@ export const DetailsStackNav = ({ route }) => {
         </View>
       </View>
     </ScrollView>
+
+    <DetailsStack.Navigator screenOptions={{ headerShown: false }}>
+      <DetailsStack.Screen name="DetailScreen" component={ParkDetails} />
+      <DetailsStack.Screen name="PeopleDetails" component={PeopleDetails} />
+      <DetailsStack.Screen name="ReviewDetails" component={ReviewDetails} />
+      <DetailsStack.Screen name="EventDetails" component={EventDetails} />
+    </DetailsStack.Navigator>
+
   );
 };
 

@@ -4,22 +4,24 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  ImageBackground,
   TouchableOpacity,
   Dimensions,
   FlatList,
   ActivityIndicator,
+  Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { GOOGLE_MAPS_APIKEY } from '@env';
-import map from 'lodash/map';
+import forEach from 'lodash/forEach';
 
 import { Header } from '../components/header/Header';
 import colors from '../styles/colors';
 import { HomeViewerContext } from '../context/HomeViewer';
-import { normalizeParkList } from '../../dummy-data/ParkData';
+
 import ReviewData from '../../dummy-data/ReviewData';
 import _ from 'lodash';
+import { normalizeParkList, fetchParkList } from '../../dummy-data/ParkData';
+
 
 const { height } = Dimensions.get('window');
 
@@ -52,13 +54,22 @@ export const Home = ({ navigation }) => {
     return <Text> HELLO{ver}</Text>;
   };
   const handleSubmit = async () => {
-    const res = await fetch(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchInput}+dog+park&language=en&key=${GOOGLE_MAPS_APIKEY}`,
-    );
-
+    const res = await fetchParkList(searchInput);
     const result = await res.json();
 
     setFilteredParkList(normalizeParkList(result.results, GOOGLE_MAPS_APIKEY));
+  };
+
+  const rating = (item) => {
+    let rate = 0;
+
+    forEach(viewer.ReviewData, (review) => {
+      if (review.parkPlaceId === item.placeId) {
+        rate += review.rate;
+      }
+    });
+
+    return rate === 0 ? rate : (rate / item.reviews.length).toFixed(1);
   };
 
   if (loading) {
@@ -90,7 +101,7 @@ export const Home = ({ navigation }) => {
       </View>
 
       {/* Parks & Loading */}
-      {!viewer.ParkData.length || fetching ? (
+      {viewer.ParkData.length < 0 || fetching ? (
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
           <View
             style={{
@@ -108,12 +119,15 @@ export const Home = ({ navigation }) => {
       ) : (
         <View style={{ flex: 1 }}>
           <FlatList
-            data={viewer.SearchedData.length ? viewer.SearchedData : viewer.ParkData}
+            data={viewer.SearchedData.length > 0 ? viewer.SearchedData : viewer.ParkData}
             renderItem={({ item }) => {
+              if (!item.image) {
+                setFetching(true);
+              }
               return (
                 <TouchableOpacity
                   key={item.placeId}
-                  style={styles.demoImagesBox}
+                  style={styles.imageBox}
                   activeOpacity={0.7}
                   onPress={
                     () => 
@@ -129,9 +143,42 @@ export const Home = ({ navigation }) => {
                     })
                   }
                 >
-                  <ImageBackground source={{ uri: item.image }} style={styles.backgroundImage}>
-                    <Text>Parks</Text>
-                  </ImageBackground>
+                  <Image source={{ uri: item.image }} style={styles.backgroundImage} />
+
+                  <View style={styles.contextBox}>
+                    <View style={{ flexDirection: 'row', marginTop: 4, marginLeft: 10 }}>
+                      <Ionicons name="ios-location" size={15} color="#212121" />
+                      <Text
+                        style={{
+                          fontWeight: 'bold',
+                          fontSize: 14,
+                          marginLeft: 4,
+                          letterSpacing: 1,
+                        }}
+                      >
+                        {item.name}
+                      </Text>
+                    </View>
+
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        marginLeft: 10,
+                        paddingBottom: 4,
+                      }}
+                    >
+                      <View style={{ flexDirection: 'row', marginTop: 4 }}>
+                        <Ionicons name="ios-star" size={15} color="#EBE28E" />
+                        <Text style={{ marginLeft: 4 }}>{rating(item)}</Text>
+                      </View>
+
+                      <View style={{ marginTop: 3, marginLeft: 8, flexDirection: 'row' }}>
+                        <Ionicons name="ios-person" size={15} color="#212121" />
+                        <Text style={{ marginLeft: 4 }}>{item.livePeople.length}</Text>
+                      </View>
+                    </View>
+                  </View>
                 </TouchableOpacity>
               );
             }}
@@ -166,8 +213,20 @@ const styles = StyleSheet.create({
   backgroundImage: {
     height: height * 0.3,
     justifyContent: 'space-between',
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
   },
-  demoImagesBox: {
-    marginTop: 20,
+  imageBox: {
+    marginTop: 30,
+  },
+  contextBox: {
+    borderLeftWidth: 0.5,
+    borderRightWidth: 0.5,
+    borderBottomWidth: 0.5,
+    borderLeftColor: colors.lightGray,
+    borderRightColor: colors.lightGray,
+    borderBottomColor: colors.lightGray,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
 });

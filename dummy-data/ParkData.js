@@ -170,6 +170,57 @@ export const normalizeParkList = (data, key) => {
   return map(data, (park, idx) => {
     const convertedName = park.name.replace(/(\s*)/g, '');
     const searchName = park.name.replace(/ /g, '+');
+
+    // Dummy Data 1 - Ramsden Dog Park
+    if (park.place_id === 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg') {
+      return {
+        id: idx + 1,
+        addrss: park.formatted_address,
+        latitude: park.geometry.location.lat.toString(),
+        longitude: park.geometry.location.lng.toString(),
+        name: park.name,
+        placeId: park.place_id,
+        image: `https://maps.googleapis.com/maps/api/staticmap?center=${convertedName}&zoom=14&size=400x400&markers=color:blue%7Clabel:S%7C11211%7C${convertedName}&key=${key}`,
+        googleLink: `https://www.google.com/maps/place?q=${searchName}`,
+        livePeople: [1],
+        reviews: [1, 4],
+        events: [1],
+      };
+    }
+
+    // Dummy Data 2 - Cheery beach
+    if (park.place_id === 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0') {
+      return {
+        id: idx + 1,
+        addrss: park.formatted_address,
+        latitude: park.geometry.location.lat.toString(),
+        longitude: park.geometry.location.lng.toString(),
+        name: park.name,
+        placeId: park.place_id,
+        image: `https://maps.googleapis.com/maps/api/staticmap?center=${convertedName}&zoom=14&size=400x400&markers=color:blue%7Clabel:S%7C11211%7C${convertedName}&key=${key}`,
+        googleLink: `https://www.google.com/maps/place?q=${searchName}`,
+        livePeople: [2],
+        reviews: [2, 5],
+        events: [2],
+      };
+    }
+
+    // Dummy Data 3 - Sunnybrook Dog Park
+    if (park.place_id === 'ChIJTeQH5iTN1IkRkzdk0eGU3fc') {
+      return {
+        id: idx + 1,
+        addrss: park.formatted_address,
+        latitude: park.geometry.location.lat.toString(),
+        longitude: park.geometry.location.lng.toString(),
+        name: park.name,
+        placeId: park.place_id,
+        image: `https://maps.googleapis.com/maps/api/staticmap?center=${convertedName}&zoom=14&size=400x400&markers=color:blue%7Clabel:S%7C11211%7C${convertedName}&key=${key}`,
+        googleLink: `https://www.google.com/maps/place?q=${searchName}`,
+        livePeople: [3],
+        reviews: [3, 6],
+        events: [3],
+      };
+    }
     return {
       id: idx + 1,
       addrss: park.formatted_address,
@@ -183,5 +234,15 @@ export const normalizeParkList = (data, key) => {
       reviews: [],
       events: [],
     };
+  });
+};
+
+export const fetchParkList = (searchInput = 'Toronto') => {
+  return new Promise((resolve) => {
+    resolve(
+      fetch(
+        `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchInput}+dog+park&language=en&key=${GOOGLE_MAPS_APIKEY}`,
+      ),
+    );
   });
 };
