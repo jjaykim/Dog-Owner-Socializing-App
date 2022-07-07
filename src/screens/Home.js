@@ -67,21 +67,6 @@ export const Home = ({ navigation }) => {
     </View>;
   }
 
-  // const sendReviewData = () => {
-  //   return (
-  //     <View>
-  //       <FlatList 
-  //         data={viewer.ReviewData}
-  //         renderItem={({ item }) => {
-           
-  //         }}
-
-          
-  //         />
-  //     </View>
-  //   );
-  // };
-
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -134,11 +119,13 @@ export const Home = ({ navigation }) => {
                     () => 
                      navigation.push('DetailScreen', {
                       ParkName: item.name,
+                      ParkAddress: item.addrss,
                       Reviews: item.reviews,
                       AllReviews: viewer.ReviewData,
                       Events: item.events,
                       AllEvents: viewer.EventData,
                       AllUsers: viewer.UserData,
+                      Image: item.image,
                     })
                   }
                 >
