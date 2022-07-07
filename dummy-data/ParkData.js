@@ -16,7 +16,7 @@ const ParkData = [
     // Array of Review Id
     reviews: [1, 4],
     // Array of Event Id
-    events: [1],
+    events: [1,4],
   },
   {
     id: 2,

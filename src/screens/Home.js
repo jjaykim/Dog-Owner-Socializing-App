@@ -17,7 +17,11 @@ import forEach from 'lodash/forEach';
 import { Header } from '../components/header/Header';
 import colors from '../styles/colors';
 import { HomeViewerContext } from '../context/HomeViewer';
+
+import ReviewData from '../../dummy-data/ReviewData';
+import _ from 'lodash';
 import { normalizeParkList, fetchParkList } from '../../dummy-data/ParkData';
+
 
 const { height } = Dimensions.get('window');
 
@@ -46,6 +50,9 @@ export const Home = ({ navigation }) => {
     }
   }, [filteredParkList]);
 
+  const tempFunction = (ver) => {
+    return <Text> HELLO{ver}</Text>;
+  };
   const handleSubmit = async () => {
     const res = await fetchParkList(searchInput);
     const result = await res.json();
@@ -122,9 +129,17 @@ export const Home = ({ navigation }) => {
                   key={item.placeId}
                   style={styles.imageBox}
                   activeOpacity={0.7}
-                  onPress={() =>
-                    navigation.push('DetailScreen', {
-                      Park: item,
+                  onPress={
+                    () => 
+                     navigation.push('DetailScreen', {
+                      ParkName: item.name,
+                      ParkAddress: item.addrss,
+                      Reviews: item.reviews,
+                      AllReviews: viewer.ReviewData,
+                      Events: item.events,
+                      AllEvents: viewer.EventData,
+                      AllUsers: viewer.UserData,
+                      Image: item.image,
                     })
                   }
                 >
