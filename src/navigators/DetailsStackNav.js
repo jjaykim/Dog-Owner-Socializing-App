@@ -204,6 +204,7 @@ const styles = StyleSheet.create({
     height: '85%',
     width: '25%',
     padding: '5%',
+    margin: '5%'
   },
   parkDetails: {
     fontWeight: '100',
@@ -221,10 +222,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: 'darkslategray',
-    borderRadius: '30',
+    borderRadius: '30%',
     height: '85%',
     width: '25%',
     padding: '5%',
+    margin: '5%'
   },
   map: {
     flexGrow: 1,
