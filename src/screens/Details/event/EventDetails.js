@@ -15,7 +15,6 @@ import { HomeViewerContext } from '../../../context/HomeViewer';
 import { InputBox } from '../../../components/common/inputBox/InputBox';
 
 export const EventDetails = ({ navigation, route }) => {
-  // let events = route.params.EventData;
   const usersData = route.params.UsersData;
   const parkInfo = route.params.ParkInfo;
 
@@ -23,6 +22,7 @@ export const EventDetails = ({ navigation, route }) => {
 
   const [clickCreate, setClickCreate] = useState(false);
   const { viewer, setViewer } = useContext(HomeViewerContext);
+  const [joined, setJoined] = useState(false);
 
   const [newTitle, setNewTitle] = useState('');
   const [newDate, setNewDate] = useState('');
@@ -47,6 +47,14 @@ export const EventDetails = ({ navigation, route }) => {
   };
 
   useEffect(() => {
+    if (!Object.keys(viewer.LoginUser).length) {
+      setJoined(false);
+    } else {
+      setJoined(true);
+    }
+  }, [viewer]);
+
+  useEffect(() => {
     if (viewer.EventData.length > numOfEvent.current) {
       const filtered = filter(viewer.EventData, (e) => e.parkPlaceId === parkInfo.placeId);
       const sorted = orderBy(
@@ -66,8 +74,31 @@ export const EventDetails = ({ navigation, route }) => {
     }
   }, [viewer, events, numOfEvent]);
 
+  // user not login
+  if (clickCreate && !joined) {
+    return (
+      <SafeAreaView style={{ flex: 1, marginHorizontal: '8%' }}>
+        <BackButton
+          navigation={navigation}
+          header="Log in to see more"
+          subHeader="Ready to create your event?"
+          logo={false}
+        />
+
+        <ClickButton
+          btnText="Go to Login"
+          onPress={() =>
+            navigation.replace('LoginScreen', {
+              screen: 'Login',
+            })
+          }
+        />
+      </SafeAreaView>
+    );
+  }
+
   // Create Event form
-  if (clickCreate) {
+  if (clickCreate && joined) {
     return (
       <SafeAreaView style={{ flex: 1, marginHorizontal: '8%' }}>
         <BackButton
