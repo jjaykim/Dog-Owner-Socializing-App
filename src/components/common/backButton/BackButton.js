@@ -5,7 +5,7 @@ import colors from '../../../styles/colors';
 import LeftArrowIcon from '../icons/LeftArrowIcon';
 import LogoTitle from '../icons/LogoTitle';
 
-export const BackButton = ({ navigation, header, subHeader }) => {
+export const BackButton = ({ navigation, header, subHeader, logo = true, marginTop = 40 }) => {
   return (
     <View>
       <View style={{ marginTop: '8%' }}>
@@ -15,8 +15,8 @@ export const BackButton = ({ navigation, header, subHeader }) => {
       </View>
 
       {header && subHeader ? (
-        <View style={{ marginTop: 40 }}>
-          <LogoTitle />
+        <View style={{ marginTop }}>
+          {logo && <LogoTitle />}
 
           <Text style={styles.header}>{header}</Text>
 

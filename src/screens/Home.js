@@ -113,6 +113,7 @@ export const Home = ({ navigation }) => {
         <View style={{ flex: 1 }}>
           <FlatList
             data={viewer.SearchedData.length > 0 ? viewer.SearchedData : viewer.ParkData}
+            disableVirtualization={false}
             renderItem={({ item }) => {
               if (!item.image) {
                 setFetching(true);
@@ -123,13 +124,14 @@ export const Home = ({ navigation }) => {
                   style={styles.imageBox}
                   activeOpacity={0.7}
                   onPress={() =>
-                    navigation.push('DetailScreen', {
-                      AllReviews: viewer.ReviewData,
-                      AllEvents: viewer.EventData,
-                      AllUsers: viewer.UserData,
-                      ParkInfo: item,
-                      lat: item.latitude,
-                      lon: item.longitude,
+                    navigation.navigate('DetailScreen', {
+                      screen: 'ParkDetails',
+                      params: {
+                        AllReviews: viewer.ReviewData,
+                        AllEvents: viewer.EventData,
+                        AllUsers: viewer.UserData,
+                        ParkInfo: item,
+                      },
                     })
                   }
                 >

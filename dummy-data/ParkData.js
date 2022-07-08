@@ -184,7 +184,7 @@ export const normalizeParkList = (data, key) => {
         googleLink: `https://www.google.com/maps/place?q=${searchName}`,
         livePeople: [1],
         reviews: [1, 4],
-        events: [1],
+        events: [1, 2],
       };
     }
 
@@ -201,7 +201,7 @@ export const normalizeParkList = (data, key) => {
         googleLink: `https://www.google.com/maps/place?q=${searchName}`,
         livePeople: [2],
         reviews: [2, 5],
-        events: [2],
+        events: [4],
       };
     }
 

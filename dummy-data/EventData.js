@@ -24,7 +24,7 @@ const EventData = [
     title: 'Meet My Husky',
     date: '2022-07-13T15:30:00.000Z',
     // Park Id
-    parkPlaceId: 'ChIJfW6I2D7L1IkRBuVHnciWKyc',
+    parkPlaceId: 'ChIJTeQH5iTN1IkRkzdk0eGU3fc',
     // Array of User Id
     users: [2],
     ownerId: 2,

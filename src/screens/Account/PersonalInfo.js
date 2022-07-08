@@ -27,7 +27,17 @@ export const PersonalInfo = ({ navigation, route }) => {
             <CircleImage image={user.profilePic} width={50} />
             <View style={styles.profileTextBox}>
               <Text style={styles.profileText}>Hello {user.fName}!</Text>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  Alert.alert('Upload your photo', 'Are you sure?', [
+                    { text: 'Cancel', style: 'destructive' },
+
+                    {
+                      text: 'Upload',
+                    },
+                  ]);
+                }}
+              >
                 <Text style={styles.welcomeText}>Update photo</Text>
               </TouchableOpacity>
             </View>

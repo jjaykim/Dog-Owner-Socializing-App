@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
 
 import { LogoHeader } from '../../components/logoHeader/LogoHeader';
 import { CircleImage } from '../../components/circle_image/CircleImage';
@@ -24,7 +24,7 @@ export const Account = ({ navigation }) => {
           <ClickButton btnText="Login" onPress={() => navigation.navigate('LoginScreen')} />
         </View>
       ) : (
-        <View>
+        <View style={{ flex: 1 }}>
           <View style={{ flexDirection: 'row' }}>
             <CircleImage image={userInfo.profilePic} width={50} />
             <View style={styles.profileTextBox}>
@@ -39,55 +39,60 @@ export const Account = ({ navigation }) => {
             <Divider color={colors.lightGray} width="115%" />
           </View>
 
-          <View>
-            <AccountSelection
-              text="Personal Information"
-              onPress={() => navigation.push('PersonalInfoScreen', { userInfo })}
-            />
-            <AccountSelection
-              text="Reviews"
-              onPress={() =>
-                navigation.push('ReviewsScreen', {
-                  userInfo,
-                  Reviews: viewer.ReviewData,
-                  Parks: viewer.ParkData,
-                })
-              }
-            />
-            <AccountSelection
-              text="Events"
-              onPress={() =>
-                navigation.push('EventsScreen', {
-                  userInfo,
-                  Events: viewer.EventData,
-                  Parks: viewer.ParkData,
-                  Users: viewer.UserData,
-                })
-              }
-            />
-          </View>
-
-          <TouchableOpacity
-            style={styles.logoutBox}
-            onPress={() => {
-              Alert.alert('Log out', 'Are you sure?', [
-                { text: 'Cancel', style: 'destructive' },
-
-                {
-                  text: "I'm Sure",
-                  onPress: async () => {
-                    await setViewer({
-                      ...viewer,
-                      LoginUser: {},
-                    });
-                    navigation.navigate('HomeScreen');
-                  },
-                },
-              ]);
-            }}
+          <ScrollView
+            contentContainerStyle={{ paddingBottom: 30 }}
+            showsVerticalScrollIndicator={false}
           >
-            <Text style={styles.logoutText}>Log out</Text>
-          </TouchableOpacity>
+            <View>
+              <AccountSelection
+                text="Personal Information"
+                onPress={() => navigation.push('PersonalInfoScreen', { userInfo })}
+              />
+              <AccountSelection
+                text="Reviews"
+                onPress={() =>
+                  navigation.push('ReviewsScreen', {
+                    userInfo,
+                    Reviews: viewer.ReviewData,
+                    Parks: viewer.ParkData,
+                  })
+                }
+              />
+              <AccountSelection
+                text="Events"
+                onPress={() =>
+                  navigation.push('EventsScreen', {
+                    userInfo,
+                    Events: viewer.EventData,
+                    Parks: viewer.ParkData,
+                    Users: viewer.UserData,
+                  })
+                }
+              />
+            </View>
+
+            <TouchableOpacity
+              style={styles.logoutBox}
+              onPress={() => {
+                Alert.alert('Log out', 'Are you sure?', [
+                  { text: 'Cancel', style: 'destructive' },
+
+                  {
+                    text: "I'm Sure",
+                    onPress: async () => {
+                      await setViewer({
+                        ...viewer,
+                        LoginUser: {},
+                      });
+                      navigation.navigate('HomeScreen');
+                    },
+                  },
+                ]);
+              }}
+            >
+              <Text style={styles.logoutText}>Log out</Text>
+            </TouchableOpacity>
+          </ScrollView>
         </View>
       )}
     </View>

@@ -16,7 +16,7 @@ import { UploadButton } from '../../components/uploadButton/UploadButton';
 
 export const SignUp = ({ navigation }) => {
   const { viewer, setViewer } = useContext(HomeViewerContext);
-  const [joined, SetJoined] = useState(false);
+  const [joined, setJoined] = useState(false);
   const [numOfDog, setNumOfDog] = useState(1);
   const [dogInputBox, setDogInputBox] = useState([]);
   const [userInfo, setUserInfo] = useState({
@@ -282,7 +282,7 @@ export const SignUp = ({ navigation }) => {
               disabled={signUpDisabled}
               onPress={() => {
                 StoreUser();
-                SetJoined(true);
+                setJoined(true);
               }}
             />
           </ScrollView>

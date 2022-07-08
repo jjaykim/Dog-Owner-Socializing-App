@@ -6,7 +6,7 @@ const ReviewData = [
     date: '2022-06-03T11:00:00.000Z',
     // ParkPlace Id
     parkPlaceId: 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg',
-    userId:1
+    userId: 1,
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const ReviewData = [
     date: '2022-06-13T12:30:00.000Z',
     // ParkPlace Id
     parkPlaceId: 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0',
-    userId:1
+    userId: 1,
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const ReviewData = [
     date: '2022-06-23T18:00:00.000Z',
     // ParkPlace Id
     parkPlaceId: 'ChIJTeQH5iTN1IkRkzdk0eGU3fc',
-    userId:3
+    userId: 3,
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const ReviewData = [
     date: '2022-06-05T10:40:00.000Z',
     // ParkPlace Id
     parkPlaceId: 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg',
-    userId:2
+    userId: 3,
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const ReviewData = [
     date: '2022-06-29T11:20:00.000Z',
     // ParkPlace Id
     parkPlaceId: 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0',
-    userId:2
+    userId: 2,
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ const ReviewData = [
     date: '2022-07-03T20:10:00.000Z',
     // ParkPlace Id
     parkPlaceId: 'ChIJTeQH5iTN1IkRkzdk0eGU3fc',
-    userId:3
+    userId: 2,
   },
 ];
 

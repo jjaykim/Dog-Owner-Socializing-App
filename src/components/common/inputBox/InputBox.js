@@ -12,6 +12,7 @@ export const InputBox = ({
   value,
   onChangeText,
   autoCapitalize = 'none',
+  editable = true,
 }) => {
   return (
     <View>
@@ -25,6 +26,7 @@ export const InputBox = ({
         value={value}
         onChangeText={onChangeText}
         autoCapitalize={autoCapitalize}
+        editable={editable}
       />
       {errorMsg ? <Text style={{ ...styles.errorMsg, marginLeft: 15 }}>{errorMsg}</Text> : null}
     </View>
