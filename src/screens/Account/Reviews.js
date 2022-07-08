@@ -81,8 +81,7 @@ export const Reviews = ({ navigation, route }) => {
                     >
                       {/* Rate */}
                       <View style={{ flexDirection: 'row', alignItems: 'center', flex: 0.2 }}>
-                        <Ionicons name="ios-star" size={15} />
-                        <Text style={{ marginTop: 2, marginLeft: 4 }}>{item.review.rate}</Text>
+                        <Text style={{ marginTop: 2, marginLeft: 4 }}>⭐️ {item.review.rate}</Text>
                       </View>
 
                       <View

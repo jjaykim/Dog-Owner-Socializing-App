@@ -12,12 +12,12 @@ const UserData = [
       {
         dogName: 'Garu',
         dogBreed: 'Toy Poodle',
-        dogPic: '../assets/User-assets/1-dogPic-Puddle.jpeg',
+        dogPic: require('../assets/User-assets/1-dogPic-Puddle.jpeg'),
       },
       {
         dogName: 'DDang',
         dogBreed: 'Jindo',
-        dogPic: '../assets/User-assets/1-dogPic-Jindo.png',
+        dogPic: require('../assets/User-assets/1-dogPic-Jindo.png'),
       },
     ],
     // Array of Event Id
@@ -38,7 +38,7 @@ const UserData = [
       {
         dogName: 'TopGun',
         dogBreed: 'Husky',
-        dogPic: '../assets/User-assets/2-husky.jpeg',
+        dogPic: require('../assets/User-assets/2-husky.jpg'),
       },
     ],
     // Array of Event Id
@@ -58,17 +58,17 @@ const UserData = [
       {
         dogName: 'Goldeni',
         dogBreed: 'Golden Retriever',
-        dogPic: '../assets/User-assets/3-golden.jpeg',
+        dogPic: require('../assets/User-assets/3-golden.png'),
       },
       {
         dogName: 'shap',
         dogBreed: 'German shepherd',
-        dogPic: '../assets/User-assets/3-shepherd.jpeg',
+        dogPic: require('../assets/User-assets/3-shepherd.png'),
       },
       {
         dogName: 'pugi',
         dogBreed: 'pug',
-        dogPic: '../assets/User-assets/3-pug.jpeg',
+        dogPic: require('../assets/User-assets/3-pug.png'),
       },
     ],
     // Array of Event Id

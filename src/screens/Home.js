@@ -17,11 +17,7 @@ import forEach from 'lodash/forEach';
 import { Header } from '../components/header/Header';
 import colors from '../styles/colors';
 import { HomeViewerContext } from '../context/HomeViewer';
-
-import ReviewData from '../../dummy-data/ReviewData';
-import _ from 'lodash';
 import { normalizeParkList, fetchParkList } from '../../dummy-data/ParkData';
-
 
 const { height } = Dimensions.get('window');
 
@@ -50,9 +46,6 @@ export const Home = ({ navigation }) => {
     }
   }, [filteredParkList]);
 
-  const tempFunction = (ver) => {
-    return <Text> HELLO{ver}</Text>;
-  };
   const handleSubmit = async () => {
     const res = await fetchParkList(searchInput);
     const result = await res.json();
@@ -129,24 +122,21 @@ export const Home = ({ navigation }) => {
                   key={item.placeId}
                   style={styles.imageBox}
                   activeOpacity={0.7}
-                  onPress={
-                    () => 
-                     navigation.push('DetailScreen', {
-                      ParkName: item.name,
-                      ParkAddress: item.addrss,
-                      Reviews: item.reviews,
+                  onPress={() =>
+                    navigation.push('DetailScreen', {
                       AllReviews: viewer.ReviewData,
-                      Events: item.events,
                       AllEvents: viewer.EventData,
                       AllUsers: viewer.UserData,
-                      Image: item.image,
+                      ParkInfo: item,
+                      lat: item.latitude,
+                      lon: item.longitude,
                     })
                   }
                 >
                   <Image source={{ uri: item.image }} style={styles.backgroundImage} />
 
                   <View style={styles.contextBox}>
-                    <View style={{ flexDirection: 'row', marginTop: 4, marginLeft: 10 }}>
+                    <View style={{ flexDirection: 'row', marginTop: 4, marginLeft: 15 }}>
                       <Ionicons name="ios-location" size={15} color="#212121" />
                       <Text
                         style={{
@@ -169,8 +159,7 @@ export const Home = ({ navigation }) => {
                       }}
                     >
                       <View style={{ flexDirection: 'row', marginTop: 4 }}>
-                        <Ionicons name="ios-star" size={15} color="#EBE28E" />
-                        <Text style={{ marginLeft: 4 }}>{rating(item)}</Text>
+                        <Text style={{ marginLeft: 2 }}>⭐️ {rating(item)}</Text>
                       </View>
 
                       <View style={{ marginTop: 3, marginLeft: 8, flexDirection: 'row' }}>

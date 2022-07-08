@@ -40,6 +40,7 @@ function HomeViewerContextProvider({ children }) {
   const filterParkList = async () => {
     const res = await fetchParkList();
     const fetched = await res.json();
+    // console.log(fetched);
 
     setFilteredParkList(normalizeParkList(fetched.results, GOOGLE_MAPS_APIKEY));
   };

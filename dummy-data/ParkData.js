@@ -16,7 +16,7 @@ const ParkData = [
     // Array of Review Id
     reviews: [1, 4],
     // Array of Event Id
-    events: [1,4],
+    events: [1, 4],
   },
   {
     id: 2,
@@ -175,9 +175,9 @@ export const normalizeParkList = (data, key) => {
     if (park.place_id === 'ChIJQVNuOPc1K4gRHN6f3m2Kgdg') {
       return {
         id: idx + 1,
-        addrss: park.formatted_address,
-        latitude: park.geometry.location.lat.toString(),
-        longitude: park.geometry.location.lng.toString(),
+        address: park.formatted_address,
+        latitude: park.geometry.location.lat,
+        longitude: park.geometry.location.lng,
         name: park.name,
         placeId: park.place_id,
         image: `https://maps.googleapis.com/maps/api/staticmap?center=${convertedName}&zoom=14&size=400x400&markers=color:blue%7Clabel:S%7C11211%7C${convertedName}&key=${key}`,
@@ -192,9 +192,9 @@ export const normalizeParkList = (data, key) => {
     if (park.place_id === 'ChIJ6dDqUP3K1IkRPJvqDTNdKV0') {
       return {
         id: idx + 1,
-        addrss: park.formatted_address,
-        latitude: park.geometry.location.lat.toString(),
-        longitude: park.geometry.location.lng.toString(),
+        address: park.formatted_address,
+        latitude: park.geometry.location.lat,
+        longitude: park.geometry.location.lng,
         name: park.name,
         placeId: park.place_id,
         image: `https://maps.googleapis.com/maps/api/staticmap?center=${convertedName}&zoom=14&size=400x400&markers=color:blue%7Clabel:S%7C11211%7C${convertedName}&key=${key}`,
@@ -209,9 +209,9 @@ export const normalizeParkList = (data, key) => {
     if (park.place_id === 'ChIJTeQH5iTN1IkRkzdk0eGU3fc') {
       return {
         id: idx + 1,
-        addrss: park.formatted_address,
-        latitude: park.geometry.location.lat.toString(),
-        longitude: park.geometry.location.lng.toString(),
+        address: park.formatted_address,
+        latitude: park.geometry.location.lat,
+        longitude: park.geometry.location.lng,
         name: park.name,
         placeId: park.place_id,
         image: `https://maps.googleapis.com/maps/api/staticmap?center=${convertedName}&zoom=14&size=400x400&markers=color:blue%7Clabel:S%7C11211%7C${convertedName}&key=${key}`,
@@ -223,9 +223,9 @@ export const normalizeParkList = (data, key) => {
     }
     return {
       id: idx + 1,
-      addrss: park.formatted_address,
-      latitude: park.geometry.location.lat.toString(),
-      longitude: park.geometry.location.lng.toString(),
+      address: park.formatted_address,
+      latitude: park.geometry.location.lat,
+      longitude: park.geometry.location.lng,
       name: park.name,
       placeId: park.place_id,
       image: `https://maps.googleapis.com/maps/api/staticmap?center=${convertedName}&zoom=14&size=400x400&markers=color:blue%7Clabel:S%7C11211%7C${convertedName}&key=${key}`,
