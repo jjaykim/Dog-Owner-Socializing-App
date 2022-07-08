@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import map from 'lodash/map';
 import repeat from 'lodash/repeat';
@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import colors from '../../styles/colors';
 import { BackButton } from '../../components/common/backButton/BackButton';
 import { CircleImage } from '../../components/circle_image/CircleImage';
+import { ClickButton } from '../../components/common/clickButton/ClickButton';
 
 export const ReviewDetails = ({ navigation, route }) => {
   const reviews = route.params.ReviewData;
@@ -25,6 +26,19 @@ export const ReviewDetails = ({ navigation, route }) => {
             <Text style={styles.headerTitle}>Reviews</Text>
           </View>
         </View>
+
+        <ClickButton
+          btnText="Write Reivew"
+          onPress={() => {
+            Alert.alert('Leave your comment', 'Are you sure?', [
+              { text: 'Cancel', style: 'destructive' },
+
+              {
+                text: 'Write',
+              },
+            ]);
+          }}
+        />
 
         <ScrollView
           showsVerticalScrollIndicator={false}
